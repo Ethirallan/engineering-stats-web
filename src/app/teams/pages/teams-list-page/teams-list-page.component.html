@@ -1,0 +1,29 @@
+<div class="container mx-auto">
+  <div class="flex justify-between items-center mb-6 py-4">
+    <h1 class="text-4xl font-bold text-ctp-yellow">Teams</h1>
+    <div>
+      <input
+        class="bg-ctp-crust border border-ctp-surface0 rounded-xl px-3 py-2 mr-2 focus:outline-none focus:ring-2 focus:ring-ctp-mauve focus:border-transparent"
+        type="text"
+        placeholder="New team name"
+        [(ngModel)]="newTeamName" />
+      <app-gradient-button label="Add team" type="submit" [disabled]="!newTeamName().trim()" (click)="createNewTeam()"></app-gradient-button>
+    </div>
+  </div>
+  @for (team of teams(); track team.id) {
+    <div
+      class="p-4 mb-4 border border-ctp-blue rounded-xl cursor-pointer bg-linear-50 from-ctp-maroon to-ctp-pink hover:from-ctp-maroon-600 hover:to-ctp-pink-600"
+      (click)="showTeamDetails(team.id)">
+      <h2 class="text-xl font-medium text-ctp-base">{{ team.name }}</h2>
+    </div>
+  } @empty {
+    <div class="flex items-center justify-center pt-20">
+      <div class="text-center">
+        <h1 class="text-2xl font-bold text-ctp-red">No Teams Available</h1>
+        <p class="text-lg mt-4 text-ctp-text">
+          It looks like you haven't added any teams yet. Use the form above to create your first team and get started!
+        </p>
+      </div>
+    </div>
+  }
+</div>
