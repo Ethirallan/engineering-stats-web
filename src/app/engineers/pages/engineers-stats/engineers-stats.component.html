@@ -1,0 +1,21 @@
+<div class="container mx-auto">
+  <div class="flex justify-between items-center py-4">
+    <h1 class="text-4xl font-bold text-ctp-yellow">{{ engineer()?.name ?? engineer()?.username ?? '/' }}</h1>
+    <div class="flex gap-4">
+      <app-gradient-button label="{{ isSyncing() ? '...Syncing' : 'Sync data' }}" type="secondary"
+        (click)="syncEngineerStats()" [disabled]="isSyncing()"></app-gradient-button>
+      <app-gradient-button label="Go back" type="primary" (click)="goBack()"></app-gradient-button>
+    </div>
+  </div>
+
+  <div class="flex justify-between items-center mb-2 py-4">
+    <h2 class="text-3xl font-medium py-2 text-ctp-pink">Stats</h2>
+    <app-period-button-group (onPeriodChanged)="loadData($event)"></app-period-button-group>
+  </div>
+
+  <app-stats-table [stats]="stats()"></app-stats-table>
+
+  <div class="py-8">
+    <app-prs-table [prs]="prs()" (onCountInStatsChanged)="toggleCountInStatsAndReloadData($event)"></app-prs-table>
+  </div>
+</div>
