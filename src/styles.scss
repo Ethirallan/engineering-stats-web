@@ -1,6 +1,21 @@
-@import "tailwindcss";
-@import "@catppuccin/tailwindcss/mocha.css";
+@import 'ngx-toastr/toastr';
+@import 'tailwindcss';
+@plugin "@tailwindcss/forms";
+@import '@catppuccin/tailwindcss/macchiato.css';
 
 html {
   @apply bg-ctp-base text-ctp-text;
+}
+
+html,
+body {
+  @apply min-h-screen h-auto;
+}
+
+.toast-success {
+  @apply bg-ctp-green-900;
+}
+
+.toast-error {
+  @apply bg-ctp-red-800;
 }
