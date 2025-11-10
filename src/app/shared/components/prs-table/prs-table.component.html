@@ -1,0 +1,48 @@
+<div class="rounded-2xl overflow-scroll shadow-lg">
+  <table class="table-auto w-full">
+    <thead class="bg-ctp-mantle text-ctp-mauve text-left font-semibold">
+      <tr>
+        <th class="py-3 px-4">Title</th>
+        <th class="py-3 px-4">Opened Date</th>
+        <th class="py-3 px-4">Merged Date</th>
+        <th class="py-3 px-4">Closed Date</th>
+        <th class="py-3 px-4">Review Time</th>
+        <th class="py-3 px-4">Loc+</th>
+        <th class="py-3 px-4">Loc-</th>
+        <th class="py-3 px-4">Total Loc</th>
+        <th class="py-3 px-4">Counts in stats</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (pr of prs(); track pr.id) {
+        <tr class="border-b text-ctp-base font-medium" [ngClass]="getRowBackgroundColor(pr)">
+          <td class="py-2 px-4">
+            <a [href]="pr.url" target="_blank" class="hover:underline">{{ pr.title }}</a>
+          </td>
+          <td class="py-2 px-4">{{ pr.openedAt | date: 'mediumDate' }}</td>
+          <td class="py-2 px-4">
+            {{ pr.mergedAt | date: 'mediumDate' }}
+          </td>
+          <td class="py-2 px-4">
+            {{ pr.mergedAt ? '' : (pr.closedAt | date: 'mediumDate') }}
+          </td>
+          <td class="py-2 px-4">
+            {{ getReviewTime(pr.openedAt, pr.closedAt) }}
+          </td>
+          <td class="py-2 px-4">{{ pr.locAdded }}</td>
+          <td class="py-2 px-4">{{ pr.locDeleted }}</td>
+          <td class="py-2 px-4">
+            {{ pr.locTotal }}
+          </td>
+          <td class="py-2 px-4 text-center">
+            <input
+              type="checkbox"
+              class="form-checkbox rounded text-ctp-base focus:ring-offset-0 focus:ring-0"
+              [(checked)]="pr.countInStats"
+              (change)="toggleCountInStats(pr)" />
+          </td>
+        </tr>
+      }
+    </tbody>
+  </table>
+</div>
