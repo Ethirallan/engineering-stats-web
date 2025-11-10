@@ -1,0 +1,47 @@
+@if (type() === 'primary') {
+  <button
+    class="px-6 py-1.5 font-medium text-lg rounded-xl bg-linear-50 from-ctp-blue-400 to-ctp-mauve-400 text-ctp-base"
+    [ngClass]="{
+      'cursor-pointer hover:from-ctp-blue hover:to-ctp-mauve': !disabled(),
+      'opacity-90 cursor-not-allowed': disabled(),
+    }"
+    [disabled]="disabled()">
+    {{ label() }}
+  </button>
+}
+
+@if (type() === 'secondary') {
+  <button
+    class="px-6 py-1.5 font-medium text-lg rounded-xl bg-linear-50 from-ctp-yellow-400 to-ctp-peach-400 text-ctp-base"
+    [ngClass]="{
+      'cursor-pointer hover:from-ctp-yellow hover:to-ctp-peach': !disabled(),
+      'opacity-90 cursor-not-allowed': disabled(),
+    }"
+    [disabled]="disabled()">
+    {{ label() }}
+  </button>
+}
+
+@if (type() === 'submit') {
+  <button
+    class="px-6 py-1.5 font-medium text-lg rounded-xl bg-linear-50 from-ctp-teal-400 to-ctp-green-400 text-ctp-base"
+    [ngClass]="{
+      'cursor-pointer hover:from-ctp-teal hover:to-ctp-green': !disabled(),
+      'opacity-90 cursor-not-allowed': disabled(),
+    }"
+    [disabled]="disabled()">
+    {{ label() }}
+  </button>
+}
+
+@if (type() === 'danger') {
+  <button
+    class="px-6 py-1.5 font-medium text-lg rounded-xl bg-linear-50 from-ctp-red to-ctp-maroon text-ctp-base"
+    [ngClass]="{
+      'cursor-pointer hover:from-ctp-red-600 hover:to-ctp-maroon-600': !disabled(),
+      'opacity-90 cursor-not-allowed': disabled(),
+    }"
+    [disabled]="disabled()">
+    {{ label() }}
+  </button>
+}
