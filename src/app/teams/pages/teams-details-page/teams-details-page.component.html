@@ -1,0 +1,45 @@
+<div class="container mx-auto">
+  <div class="flex justify-between items-center py-4">
+    <h1 class="text-4xl font-bold text-ctp-yellow">
+      {{ team()?.name ?? '/' }}
+    </h1>
+    <div class="flex gap-4">
+      <app-gradient-button label="Delete team" type="danger" (click)="deleteTeam()"></app-gradient-button>
+      @if (team()?.engineers?.length ?? 0 > 2) {
+        <app-gradient-button label="Show stats" type="primary" (click)="showTeamStats()"></app-gradient-button>
+      }
+    </div>
+  </div>
+
+  <div class="flex justify-between items-center mb-6 py-4">
+    <h2 class="text-3xl font-medium text-ctp-pink">Members</h2>
+    <div>
+      <input
+        class="bg-ctp-crust border border-ctp-surface0 rounded-xl px-3 py-2 mr-2 focus:outline-none focus:ring-2 focus:ring-ctp-mauve focus:border-transparent"
+        type="text"
+        placeholder="New member username"
+        [(ngModel)]="newMemberUsername" />
+      <app-gradient-button label="Add team member" type="submit" [disabled]="!newMemberUsername().trim()" (click)="addMemberToTeam()"></app-gradient-button>
+    </div>
+  </div>
+
+  <div class="grid grid-cols-3 gap-4 py-4">
+    @for (member of team()?.engineers; track member.id) {
+      <div class="flex flex-col items-center py-4">
+        <img
+          class="h-30 w-30 rounded-full cursor-pointer hover:scale-105 transition-transform"
+          src="{{ member?.profilePictureUrl ?? 'https://via.placeholder.com/150' }}"
+          (click)="showEngineerStats(member.id)"
+          alt="Avatar" />
+        <div class="flex items-center gap-2">
+          <h2 class="text-lg font-medium text-ctp-lavender py-2">
+            {{ member?.name ?? member?.username }}
+          </h2>
+          <button class="text-ctp-red hover:text-ctp-red-800 cursor-pointer" (click)="removeMemberFromTeam(member.id)">
+            <app-delete></app-delete>
+          </button>
+        </div>
+      </div>
+    }
+  </div>
+</div>
