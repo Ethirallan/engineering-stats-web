@@ -1,0 +1,23 @@
+<div>
+  <button class="cursor-pointer border-y border-l border-ctp-pink text-lg rounded-l-xl font-medium px-3 py-1.5"
+    [ngClass]="{
+      'bg-ctp-mantle text-ctp-text hover:bg-ctp-pink hover:text-ctp-base ': selectedPeriod() !== 'year',
+    }" [ngClass]="{ 'bg-ctp-pink text-ctp-base': selectedPeriod() === 'year' }" (click)="changePeriod('year')">
+    Year
+  </button>
+  <button class="cursor-pointer border border-ctp-pink text-lg font-medium px-3 py-1.5" [ngClass]="{
+      'bg-ctp-mantle text-ctp-text hover:bg-ctp-pink hover:text-ctp-base ': selectedPeriod() !== 'quarter',
+    }" [ngClass]="{ 'bg-ctp-pink text-ctp-base': selectedPeriod() === 'quarter' }" (click)="changePeriod('quarter')">
+    Quarter
+  </button>
+  <button class="cursor-pointer border-y border-ctp-pink text-lg font-medium px-3 py-1.5" [ngClass]="{
+      'bg-ctp-mantle text-ctp-text hover:bg-ctp-pink hover:text-ctp-base ': selectedPeriod() !== 'month',
+    }" [ngClass]="{ 'bg-ctp-pink text-ctp-base': selectedPeriod() === 'month' }" (click)="changePeriod('month')">
+    Month
+  </button>
+  <button class="cursor-pointer border border-ctp-pink text-lg rounded-r-xl font-medium px-3 py-1.5" [ngClass]="{
+      'bg-ctp-mantle text-ctp-text hover:bg-ctp-pink hover:text-ctp-base ': selectedPeriod() !== 'week',
+    }" [ngClass]="{ 'bg-ctp-pink text-ctp-base': selectedPeriod() === 'week' }" (click)="changePeriod('week')">
+    Week
+  </button>
+</div>
