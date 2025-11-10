@@ -1,0 +1,44 @@
+<div class="rounded-2xl overflow-scroll shadow-lg">
+  <table class="table-auto w-full">
+    <thead class="bg-ctp-mantle text-ctp-lavender text-left font-semibold">
+      <tr>
+        <th class="py-3 px-4">Metric</th>
+        @for (stat of stats(); track stat.label) {
+          <th class="py-3 px-4">{{ stat.label }}</th>
+        }
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="py-3 px-4 bg-ctp-mantle text-ctp-yellow font-medium">PR Reviewed</td>
+        @for (stat of stats(); track stat.label) {
+          <td class="py-3 px-4 text-center text-ctp-yellow">{{ stat.prReviewed }}</td>
+        }
+      </tr>
+      <tr>
+        <td class="py-3 px-4 bg-ctp-mantle text-ctp-pink font-medium">PR Merged</td>
+        @for (stat of stats(); track stat.label) {
+          <td class="py-3 px-4 text-center text-ctp-pink">{{ stat.prMerged }}</td>
+        }
+      </tr>
+      <tr>
+        <td class="py-3 px-4 bg-ctp-mantle text-ctp-green font-medium">LOC +</td>
+        @for (stat of stats(); track stat.label) {
+          <td class="py-3 px-4 text-center text-ctp-green">{{ stat.locAdded }}</td>
+        }
+      </tr>
+      <tr>
+        <td class="py-3 px-4 bg-ctp-mantle text-ctp-maroon font-medium">LOC -</td>
+        @for (stat of stats(); track stat.label) {
+          <td class="py-3 px-4 text-center text-ctp-maroon">{{ stat.locDeleted }}</td>
+        }
+      </tr>
+      <tr>
+        <td class="py-3 px-4 bg-ctp-mantle text-ctp-mauve font-medium">LOC Total</td>
+        @for (stat of stats(); track stat.label) {
+          <td class="py-3 px-4 text-center text-ctp-mauve">{{ stat.locTotal }}</td>
+        }
+      </tr>
+    </tbody>
+  </table>
+</div>
